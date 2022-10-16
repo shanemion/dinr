@@ -1,0 +1,164 @@
+
+<!DOCTYPE html>
+<!-- Hi! Thank you for the opportunity to participate in calhacks 9.0. Though my team and I didn't accomplish too much, we had a lot of fun
+meeting people and are inspired to learn more for the coming years. I will continue to work on this project on my own time, but we had to 
+call it early as one of my teammates had to return home. 
+
+The github description of the project is here: 
+This is Dinr (pronounced "Diner"), a college-focused app focused on finding the best dining hall for students at every particular meal based on student-reviews. With students provided a limited number of meal swipes from their academic institution, it is unreasonable for students to check every dining hall to find the one with the best food--they'd probably run out of swipes by day 2. Therefore, an app such as this can guide students on which dining hall to go to for each meal in order to optimize their eating experience in university.
+Students will be limited to only the institution they attend. We will ensure this by requiring students to "log-in" through their college email (with a confirmation email to their college email to confirm this identity). However, beyond this, users will be annonymous so that they are more inclined to give their honest opinions of a dining hall.
+On the main screen, the header will include 1) the date and 2) the meal. This will reset per meal and per day. Below this, the top 3 dining halls will be listed (I'll elaborate how this is done in a bit), along with specific dishes that dining hall might have, so users know which dining hall has the best food for a given meal.
+We will also have screens for each individual dining hall (I plan on making a landing screen that link to each dining hall). In these screens, users can view the reviews for that dining hall in a given meal, as well as give their own reviews. For each review, there will be 1) what foods there are in the dining hall and 2) an open ended-review on how the food is, the reviewers experience, reviewer recommendations, etc.
+For each review in each dining hall, we will review the words that are used to determine how positive or negative the review is, and rate a view on a scale from (1-5) based on the word choice of the review. We will then compute the average rating of a review at a dining hall, with the top 3 average rating dining halls becoming the top 3 dining halls placed on the main screen
+
+Thank you again!
+-Shane Mion, Austin Yang, Nolan Nguyen + more-->
+
+<html>
+<head>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+</head>
+
+<body>
+      
+    <div class="container">
+        <section id="header">
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="./pages/arillaga.html">Arillaga</a>
+                <a href="./pages/lakeside.html">Lakeside</a>
+                <a href="./pages/wilbur.html">Wilbur</a>
+                <a href="./pages/stern.html">Stern</a>
+                <a href="./pages/branner.html">Branner</a>
+                <a href="./pages/casper.html">Casper</a>
+                <a href="./pages/florence.html">Florence Moore</a>
+                <a href="./pages/ricker.html">Ricker</a>
+              </div>
+        
+            <span style="font-size:30px;cursor:pointer" id="open_margin" onclick="openNav()">&#9776; Open</span>
+
+            <img id="dinr" src = "images/thumbnail.png">
+
+            
+            <div class="meal">
+                <p id="date_meal">txt</p>
+                <p id="date">txt</p>
+            </div>
+        </section>
+
+
+        <section class="first_page" id="grid">
+
+            <h1>Welcome to Dinr!</h1>
+            <img src = "images/dinrcat.gif">
+            
+
+        </section>
+        
+        <section class="review_page">
+            <div class="vertical">
+                <h1 id="subtitle">Leave your own feedback!</h1>
+                    <div class="">
+                        <div class="items">
+                            <h2 class="sum">
+                                <form>
+                                    <label for="name">Name:</label>
+                                        <input type="text" id="name" name="name"><br><br>
+                                    <label for="hall">Dining Hall:</label>
+                                        <select name="hall" id="hall" size="8">
+                                        <option value="arillaga">Arillaga</option>
+                                        <option value="branner">Branner</option>
+                                        <option value="casper">Casper</option>
+                                        <option value="florence">Florence</option>
+                                        <option value="lakeside">Lakeside</option>
+                                        <option value="ricker">Ricker</option>
+                                        <option value="stern">Stern</option>
+                                        <option value="wilbur">Wilbur</option>
+                                        </select>
+                                    <label for="meal">Meal:</label>
+                                        <select name="meal" id="meal" size="3">
+                                        <option value="breakfast">Breakfast</option>
+                                        <option value="lunch">Lunch</option>
+                                        <option value="dinner">Dinner</option>
+                                        </select>
+                                    <label for="rating">Rating:</label>
+                                        <select name="rating" id="rating" size="5">
+                                        <option value="one">1</option>
+                                        <option value="two">2</option>
+                                        <option value="three">3</option>
+                                        <option value="four">4</option>
+                                        <option value="five">5</option>
+                                        </select>
+                                    <label for="name">Review:</label>
+                                    <input type="text" id="review" name=""><br><br>
+                                    <input type="submit" value="Submit">
+                                </form>
+                            </h2>
+                            <p class="paragraph">
+                                
+                            </p>
+                        </div>
+        </section>
+        
+    </div>
+
+    <script>
+        var date = new Date()
+        var curHr = date.getHours()
+        //display meal (breakfast, lunch, or dinner) based on hour of the day
+        if (curHr < 10) {
+        document.getElementById('date_meal').innerHTML = "Breakfast"
+        } else if (curHr < 15) {
+        document.getElementById('date_meal').innerHTML = "Lunch"
+        } else {
+        document.getElementById('date_meal').innerHTML = "Dinner"
+        } 
+        //display current date 
+	    var current_date = date.getFullYear()+"/"+(date.getMonth()+1.)+"/"+ date.getDate();
+	    document.getElementById("date").innerHTML = current_date;
+
+        //sidebar
+        onclick="openNav()"> open
+
+        function openNav() {
+        document.getElementById("mySidenav").style.width = "250px";
+        }
+
+        function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+        }
+
+        //form
+        let reviews = []
+
+        const addReview = (ev)=>{
+            ev.preventDefault(); //stops form from instantly submitting
+            let review = {
+                id: Date.now(), //current timestamp
+                title: document.getElementbyId('name').value,
+                hall: document.getElementbyId('hall').value,
+                rating: document.getElementbyId('rating').value,
+                review: document.getElementbyId('review').value
+            }
+            //adds reviews to review array; add if statement later to ensure comment filled.
+            reviews.push(review);
+            document.forms[0].reset(); //clears form for next entries
+            
+            console.warn('added' , {reviews});
+        
+        }
+
+        document.addEventListener('DOMContentLoaded', ()=>{
+            document.getElementbyId('review').addEventListener('click', addReview);
+        });
+
+    </script>
+
+</body>
+
+
+
+</html>
